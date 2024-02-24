@@ -1,5 +1,6 @@
 from kivy import app
 from kivy.app import App
+from kivy.base import Clock
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -14,16 +15,17 @@ from kivy.uix.filechooser import FileChooserIconView
 class EdwardEditor(GridLayout):
     fn = "/tmp/foo.md"
 
-    def save_file(self):
+    def save_file(self, **kwargs):
+        print("saving file", self.fn)
         with open(self.fn, "w") as f:
             f.write(self.textinput.text)
+
     def read_file(self):
         self.label_fn.text = self.fn
         with open(self.fn, "r") as f:
             return f.read()
 
     def on_text(self, instance, value):
-        print(self.textinput.cursor)
         pass
 
     def on_focus(self, instance, value):
@@ -42,7 +44,8 @@ class EdwardEditor(GridLayout):
 
     def on_key_down(self, *args):
         # UI works best with scales starting one, hence +1 here
-        self.label_licol.text = str(self.textinput.cursor[1] + 1) + ":" + str(self.textinput.cursor[0] + 1)
+        self.label_licol.text = str(self.textinput.cursor_row + 1) + ":" + str(self.textinput.cursor_col + 1)
+
 
     def __init__(self, **kwargs):
         super(EdwardEditor, self).__init__(**kwargs)
@@ -68,8 +71,9 @@ class EdwardEditor(GridLayout):
         self.add_widget(self.action_bar)
         self.textinput = CodeInput(
             text=self.read_file(),
-            lexer=MarkdownLexer(),
+            lexer=MarkdownLexer()
         )
+        self.textinput.cursor = (0, 0)
 
         self.textinput.bind(text=self.on_text)
         self.textinput.bind(focus=self.on_focus)
@@ -79,7 +83,12 @@ class EdwardEditor(GridLayout):
 
 class EdwardApp(App):
     def build(self):
-        return EdwardEditor()
+        editor = EdwardEditor()
+
+        # Fails with: TypeError: EdwardEditor.save_file() takes 1 positional argument but 2 were given
+        # Clock.schedule_interval(editor.save_file, 10.0/60.0)
+
+        return editor
 
 
 if __name__ == '__main__':

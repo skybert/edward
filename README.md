@@ -23,3 +23,24 @@ needs another editor. What I _do_ believe, though, is that _I_ need
 another editor for Android. I've tried a dusin and can't be bothered
 anymore. They're all either too slow to open for quick edits, are too
 bloated or don't store file sin plain text or
+
+## Features
+
+### MVP
+- ✓ Load fast
+- ✓ Read file from disk
+- ✓ Save
+- ✓ Auto save
+- ✓ Undo
+- ✓ Markdown support
+- Open file
+- Save as
+- Run on Android
+
+### Bonus features
+- ✓ Runs on Linux
+
+### Future features
+- Full Unicode support
+- Emacs shortcuts on Linux
+- Search 

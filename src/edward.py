@@ -3,7 +3,8 @@ from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
-
+from kivy.uix.codeinput import CodeInput
+from pygments.lexers.markup import MarkdownLexer
 
 class EdwardEditor(GridLayout):
     fn = "/tmp/foo.md"
@@ -16,7 +17,7 @@ class EdwardEditor(GridLayout):
             return f.read()
     
     def on_text(self, instance, value):
-        print(value)
+        pass
 
     def on_focus(self, instance, value):
         print("on focus")
@@ -27,8 +28,12 @@ class EdwardEditor(GridLayout):
     def __init__(self, **kwargs):
         super(EdwardEditor, self).__init__(**kwargs)
         self.cols = 1
-        self.textinput = TextInput(
-            text=self.read_file()
+        # self.textinput = TextInput(
+        #     text=self.read_file()
+        # )
+        self.textinput = CodeInput(
+            text=self.read_file(),
+            lexer=MarkdownLexer(),
         )
         self.textinput.bind(text=self.on_text)
         self.textinput.bind(focus=self.on_focus)

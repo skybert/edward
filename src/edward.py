@@ -28,9 +28,6 @@ class EdwardEditor(GridLayout):
     def __init__(self, **kwargs):
         super(EdwardEditor, self).__init__(**kwargs)
         self.cols = 1
-        # self.textinput = TextInput(
-        #     text=self.read_file()
-        # )
         self.textinput = CodeInput(
             text=self.read_file(),
             lexer=MarkdownLexer(),
@@ -39,10 +36,6 @@ class EdwardEditor(GridLayout):
         self.textinput.bind(focus=self.on_focus)
 
         self.add_widget(self.textinput)
-
-
-
-
 
 class EdwardApp(App):
     def build(self):

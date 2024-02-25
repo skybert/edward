@@ -47,4 +47,4 @@ highlighting.
 - File upload, be that FTP, SSH/SCP, rsync
 
 ## License
-See the [LICENCE](LICENCE) file.
+See the [LICENSE](LICENSE) file.

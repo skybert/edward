@@ -50,9 +50,12 @@ highlighting.
 
 ## Install
 
-First, you need to have `pipenv` installed:
+First, you need to have `pipenv` and `make` installed. On Arch Linux
+you install these with:
+
 ```text
-# pacman -S python-pipenv
+# pacman -S core/make
+# pacman -S extra/python-pipenv
 ```
 
 Then, get the source code and install the dependencies in a virtual

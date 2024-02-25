@@ -1,3 +1,9 @@
+#! /usr/bin/env python3
+#
+# Lean and fast Markdown editor for Android and Linux
+#
+# by torstein@skybert.net
+#
 from kivy import app
 from kivy.app import App
 from kivy.base import Clock

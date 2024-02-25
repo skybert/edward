@@ -1,53 +1,61 @@
 #! /usr/bin/env python3
 #
-# Lean and fast Markdown editor for Android and Linux
-#
 # by torstein@skybert.net
 #
-from kivy import app
-from kivy.app import App
-from kivy.base import Clock
-from kivy.uix.widget import Widget
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.codeinput import CodeInput
-from kivy.uix.actionbar import ActionBar, ActionButton, ActionLabel, ActionPrevious
-from kivy.uix.actionbar import ActionView
-from pygments.lexers.markup import MarkdownLexer
-from kivy.core.window import Window
-from kivy.uix.filechooser import FileChooserIconView
+"""
+Lean and fast Markdown editor for Android and Linux
+"""
 import sys
 import os
 
+from kivy.app import App
+from kivy.base import Clock
+from kivy.core.window import Window
+from kivy.uix.actionbar import ActionBar, ActionButton, ActionLabel, ActionPrevious
+from kivy.uix.actionbar import ActionView
+from kivy.uix.codeinput import CodeInput
+from kivy.uix.filechooser import FileChooserIconView
+from kivy.uix.gridlayout import GridLayout
+from pygments.lexers.markup import MarkdownLexer
+
+
 class EdwardEditor(GridLayout):
+    """
+    The editor component of the editor. This is the main thing!
+    """
+
     fn = "/tmp/foo.md"
 
-    def save_file(self, foo=1.0):
-        with open(self.fn, "w") as f:
+    def save_file(self, call_interval=1.0):
+        """
+        Saves/flushed the file to disk.
+        """
+        with open(self.fn, "w", encoding="UTF-8") as f:
             f.write(self.textinput.text)
 
     def read_file(self):
+        """Reads the file from disk"""
         self.label_fn.text = self.fn
-        with open(self.fn, "r") as f:
+        with open(self.fn, "r", encoding="UTF-8") as f:
             return f.read()
 
-    def on_text(self, instance, value):
-        pass
-
     def on_focus(self, instance, value):
+        """Alt+Tab or click."""
         print("on focus")
         if not value:
             print(instance, "lost focus")
             self.save_file()
 
-    def open_file(self, instance):
+    def open_file(self, **kwargs):
+        """
+        Open a (different) file
+        """
         print("open file")
         self.file_chooser = FileChooserIconView()
         self.add_widget(self.file_chooser)
-        pass
 
     def on_key_down(self, *args):
+        """Triggers when a key is pressed"""
         # UI works best with scales starting one, hence +1 here
         self.label_licol.text = (
             str(self.textinput.cursor_row + 1)
@@ -56,7 +64,7 @@ class EdwardEditor(GridLayout):
         )
 
     def __init__(self, fn=None, **kwargs):
-        super(EdwardEditor, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         if fn is not None:
             self.fn = fn
 
@@ -78,7 +86,6 @@ class EdwardEditor(GridLayout):
         self.textinput = CodeInput(text=self.read_file(), lexer=MarkdownLexer())
         self.textinput.cursor = (0, 0)
 
-        self.textinput.bind(text=self.on_text)
         self.textinput.bind(focus=self.on_focus)
         Window.bind(on_key_down=self.on_key_down)
 
@@ -86,13 +93,16 @@ class EdwardEditor(GridLayout):
 
 
 class EdwardApp(App):
+    """
+    The Edward Kivi app class.
+    """
 
     def __init__(self, fn=None, **kwargs):
-        super(EdwardApp, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.fn = fn
 
     def build(self):
-        editor = EdwardEditor(fn)
+        editor = EdwardEditor(self.fn)
 
         # Auto save every 10 seconds
         Clock.schedule_interval(editor.save_file, 10.0)
@@ -108,7 +118,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         fn = sys.argv[1]
         if not os.path.exists(fn):
-            with open(fn, "w"):
+            with open(fn, "w", encoding="UTF-8"):
                 print("Created new file", fn)
 
     EdwardApp(fn=fn).run()

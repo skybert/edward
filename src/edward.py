@@ -18,7 +18,7 @@ from pygments.lexers.markup import MarkdownLexer
 from kivy.core.window import Window
 from kivy.uix.filechooser import FileChooserIconView
 import sys
-
+import os
 
 class EdwardEditor(GridLayout):
     fn = "/tmp/foo.md"
@@ -102,7 +102,13 @@ class EdwardApp(App):
 
 if __name__ == "__main__":
     fn = None
+
+    # Not using argparse here as it interferes with Kivy's
+    # argparsing. (yes, I know about KIVY_NO_ARGS=1)
     if len(sys.argv) > 1:
         fn = sys.argv[1]
+        if not os.path.exists(fn):
+            with open(fn, "w"):
+                print("Created new file", fn)
 
     EdwardApp(fn=fn).run()

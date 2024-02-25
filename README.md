@@ -1,5 +1,5 @@
 
-# Edward
+# Edward 
 
 Lean and fast Markdown editor for Android and Linux.
 
@@ -45,6 +45,27 @@ highlighting.
 ### Will not do
 - Version control
 - File upload, be that FTP, SSH/SCP, rsync
+
+
+## Install
+
+First, you need to have `pipenv` installed:
+```text
+# pacman -S python-pipenv
+```
+
+Then, get the source code and install the dependencies in a virtual
+environment:
+```text
+$ git clone https://github.com/skybert/edward.git
+$ cd edward
+$ make install
+```
+
+Finally, run Edward with:
+```text
+$ make run
+```
 
 ## License
 See the [LICENSE](LICENSE) file.

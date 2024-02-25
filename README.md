@@ -21,27 +21,27 @@ highlighting.
 ## Features
 
 ### Minimum Lovable Product aka MVP
-- ✓ Large text area.
-- ✓ Load fast
-- ✓ Read file from disk
-- ✓ Save
-- ✓ Auto save every `<n>` seconds
-- ✓ Undo
-- ✓ Markdown support
-- Open file
-- Save as
-- Run on Android
-- Easy to use with standard Android keyboards like Gboard.
+- ✅ Large text area.
+- ✅ Load fast
+- ✅ Read file from disk
+- ✅ Save
+- ✅ Auto save every `<n>` seconds
+- ✅ Undo
+- ✅ Markdown support
+- 🆕 Open file
+- 🆕 Save as
+- 🆕 Run on Android
+- 🆕 Easy to use with standard Android keyboards like Gboard.
 
 ### Bonus features
-- ✓ Runs on Linux
-- ✓ Open file from the command line with `edward.py <file>`
+- ✅ Runs on Linux
+- ✅ Open file from the command line with `edward.py <file>`
 
 ### Future features
-- Full Unicode support
-- Emacs shortcuts on Linux
-- Search for text
-- Configurable with `~/.edward.conf`
+- 🆕 Full Unicode support
+- 🆕 Emacs shortcuts on Linux
+- 🆕 Search for text
+- 🆕 Configurable with `~/.edward.conf`
 
 ### Will not do
 - Version control

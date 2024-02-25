@@ -8,6 +8,8 @@ the way I like it to be. Since it's written in Python, it's cross
 platform by nature and will run on Linux too. However, if there's ever
 a conflict between the two, Android will take precedence.
 
+<img src="screenshots/2024-02-24-edward.png" alt="edward the editor"/>
+
 ## Why?
 Does the world need another editor? Definitely not. What I _do_
 believe, though, is that _I_ need another editor for Android. I've

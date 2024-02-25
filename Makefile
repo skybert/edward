@@ -6,6 +6,9 @@ SOURCES = src
 
 all: format
 
+install:
+	pipenv install
+
 format:
 	pipenv run black $(SOURCES)
 

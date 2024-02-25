@@ -20,7 +20,7 @@ highlighting.
 
 ## Features
 
-### MVP
+### Minimum Lovable Product aka MVP
 - ✓ Large text area.
 - ✓ Load fast
 - ✓ Read file from disk
@@ -35,6 +35,7 @@ highlighting.
 
 ### Bonus features
 - ✓ Runs on Linux
+- ✓ Open file from the command line with `edward.py <file>`
 
 ### Future features
 - Full Unicode support
@@ -45,7 +46,7 @@ highlighting.
 ### Will not do
 - Version control
 - File upload, be that FTP, SSH/SCP, rsync
-
+  
 
 ## Install
 

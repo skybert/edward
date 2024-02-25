@@ -17,6 +17,7 @@ from kivy.uix.actionbar import ActionView
 from pygments.lexers.markup import MarkdownLexer
 from kivy.core.window import Window
 from kivy.uix.filechooser import FileChooserIconView
+import sys
 
 
 class EdwardEditor(GridLayout):
@@ -54,8 +55,11 @@ class EdwardEditor(GridLayout):
             + str(self.textinput.cursor_col + 1)
         )
 
-    def __init__(self, **kwargs):
+    def __init__(self, fn=None, **kwargs):
         super(EdwardEditor, self).__init__(**kwargs)
+        if fn is not None:
+            self.fn = fn
+
         self.cols = 1
         self.action_view = ActionView()
         self.action_previous = ActionPrevious(title="Edward", with_previous=False)
@@ -82,8 +86,13 @@ class EdwardEditor(GridLayout):
 
 
 class EdwardApp(App):
+
+    def __init__(self, fn=None, **kwargs):
+        super(EdwardApp, self).__init__(**kwargs)
+        self.fn = fn
+
     def build(self):
-        editor = EdwardEditor()
+        editor = EdwardEditor(fn)
 
         # Auto save every 10 seconds
         Clock.schedule_interval(editor.save_file, 10.0)
@@ -92,4 +101,8 @@ class EdwardApp(App):
 
 
 if __name__ == "__main__":
-    EdwardApp().run()
+    fn = None
+    if len(sys.argv) > 1:
+        fn = sys.argv[1]
+
+    EdwardApp(fn=fn).run()

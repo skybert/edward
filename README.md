@@ -14,9 +14,12 @@ a conflict between the two, Android will take precedence.
 Does the world need another editor? Definitely not. What I _do_
 believe, though, is that _I_ need another editor for Android. I've
 tried a dusin and can't be bothered anymore. They're all either too
-slow to open for quick edits, are too bloated or don't store file sin
-plain text. And if they do, they don't have Markdown syntax
+slow to open for quick edits, are too bloated or don't store the files
+in plain text. And if they do, they don't have Markdown syntax
 highlighting.
+
+What I want is what I've listed under the "Minimum lovable product"
+below.
 
 ## Features
 
@@ -51,7 +54,7 @@ highlighting.
 ## Install
 
 First, you need to have `pipenv` and `make` installed. On Arch Linux
-you install these with:
+you can install these with:
 
 ```text
 # pacman -S core/make

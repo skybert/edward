@@ -4,9 +4,9 @@
 #
 SOURCES = src
 
-default = run
+default: format lint
 
-all: format
+all: install format lint run
 
 install:
 	pipenv install

@@ -37,6 +37,7 @@ class FileDialogPopup(Popup):
     """
     What it says on the tin.
     """
+
     def file_selected(self, selection):
         """
         Triggered when one or more _files_ have been selected in
@@ -47,7 +48,7 @@ class FileDialogPopup(Popup):
 
 class EdwardApp(App):
     """
-    The Edward Kivi app class.
+    The Edward Kivy app class.
     """
 
     file_chooser_dir = str(Path.home())
@@ -94,7 +95,7 @@ class EdwardApp(App):
 
     def save_file(self, call_interval=1.0):
         """
-        Saves/flushed the file to disk.
+        Saves/flushes the file to disk.
         """
         if not self.fn:
             return
@@ -106,8 +107,10 @@ class EdwardApp(App):
     def build(self):
         editor = EdwardEditor()
         editor.ids.code_input.lexer = MarkdownLexer()
-        # Auto save every 10 seconds
+
+        # Auto save
         Clock.schedule_interval(self.save_file, 5.0)
+
         return editor
 
 

@@ -43,6 +43,7 @@ below.
 ### Future features
 - 🆕 Full Unicode support
 - 🆕 Emacs shortcuts on Linux
+- 🆕 Show r/o state of file
 - 🆕 Search for text
 - 🆕 Configurable with `~/.edward.conf`
 

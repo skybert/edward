@@ -10,6 +10,8 @@ pygments = "*"
 [dev-packages]
 black = "*"
 pylint = "*"
+buildozer = "*"
+cython = "*"
 
 [requires]
 python_version = "3.11"

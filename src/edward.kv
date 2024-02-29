@@ -1,0 +1,47 @@
+<EdwardEditor>:
+  GridLayout:
+    cols: 1
+    size: root.width, root.height
+
+    code_text: code_input
+    lbl_linecol: lbl_linecol
+    lbl_fn: lbl_fn
+
+    ActionView:
+      # size_hint: (None, 0.1)
+      size_hint_y: None
+      height: dp(48)
+
+      ActionPrevious:
+        title: 'Edward'
+        with_previous: False
+      ActionButton:
+        text: "Open"
+        on_press: app.show_file_dialog()
+        # on_press: app.open_file()
+
+      ActionLabel:
+        id: lbl_linecol
+        text: "1:1"
+      ActionLabel:
+        id: lbl_fn
+        text: "*scratch*"
+      ActionLabel:
+        id: lbl_fn_state
+        text: "*"
+
+    CodeInput:
+      id: code_input
+      text: "# Welcome to Edward the editor"
+      font_size: '20sp'  # Adjust font size as needed
+      size_hint: (1, .9)
+      on_cursor_pos: root.on_cursor_pos(self.cursor_pos)
+      on_text: app.on_file_changed(self.text)
+
+<FileDialogPopup>:
+  FileChooserListView:
+    id: file_chooser
+    # on_selection: root.file_selected(file_chooser.selection)
+    on_submit: root.file_selected(file_chooser.selection)
+    on_submit: app.file_selected(file_chooser.selection)
+    filters: ['*.md', '*.txt', '*.org', '*..*rc']

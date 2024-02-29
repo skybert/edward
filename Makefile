@@ -4,6 +4,8 @@
 #
 SOURCES = src
 
+default = run
+
 all: format
 
 install:

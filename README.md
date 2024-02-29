@@ -31,7 +31,7 @@ below.
 - ✅ Auto save every `<n>` seconds
 - ✅ Undo
 - ✅ Markdown support
-- 🆕 Open file
+- ✅ Open file
 - 🆕 Save as
 - 🆕 Run on Android
 - 🆕 Easy to use with standard Android keyboards like Gboard.

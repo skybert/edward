@@ -19,3 +19,7 @@ lint:
 
 run:
 	pipenv run python3 $(SOURCES)/edward.py
+
+apk:
+	export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+	pipenv run buildozer android debug

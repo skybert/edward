@@ -113,8 +113,7 @@ class EdwardApp(App):
 
         return editor
 
-
-if __name__ == "__main__":
+def main():
     file_name = None
 
     # Not using argparse here as it interferes with Kivy's
@@ -128,3 +127,7 @@ if __name__ == "__main__":
     app = EdwardApp()
     app.fn = file_name
     app.run()
+
+
+if __name__ == "__main__":
+    main()

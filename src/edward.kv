@@ -33,10 +33,12 @@
     CodeInput:
       id: code_input
       text: "# Welcome to Edward the editor"
+      focus: True
       font_size: '20sp'  # Adjust font size as needed
       size_hint: (1, .9)
       on_cursor_pos: root.on_cursor_pos(self.cursor_pos)
       on_text: app.on_file_changed(self.text)
+      keyboard_suggestions: True
 
 <FileDialogPopup>:
   FileChooserListView:
